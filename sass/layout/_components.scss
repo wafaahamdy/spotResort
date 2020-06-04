@@ -1,0 +1,330 @@
+//////********** buttons  *******************//
+
+.btn{
+    @include styleLink ($color-white) ;
+    display: inline-block ;
+    background-color: $color-primary ;
+    padding: 1.5rem 3rem;
+    border-radius: 2rem;
+    transition: transform .5s ease ;
+    position: relative;
+        
+    &:hover{
+        box-shadow:  0 10px 20px rgba($color-black, 0.2)  ;
+        transform: translateY(-10px);
+        background-color: darken($color-primary, 0.15) ;
+    
+    }
+
+    &:active{
+        box-shadow:  0 5px 10px rgba($color-black, 0.2)  ;
+        transform: translateY(-5px);
+    
+    }
+
+  }
+
+.btn-animated{
+
+    &::after{
+        content: "" ;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        position: absolute; 
+        top: 0 ;
+        left: 0;
+        border-radius: 2rem;
+        z-index: -1;
+        transition: all 0.5s ;
+        background-color: darken($color-primary, 0.15) ;
+
+}
+
+
+&:hover::after{
+    transform: scale(1.5) ;
+    opacity: 0;
+}
+
+}
+
+
+//// small button
+.btnsm {
+    @include styleLink ($color-primary) ; 
+
+    &:link , &:visited{
+        display: inline-block ; 
+        font-size: 1.6rem;
+        border-bottom: 1px solid $color-primary;
+        padding: 5px;
+        border-radius: 2px;
+        transition: all .5s ease;
+    }
+
+    &:hover{
+        background-color: $color-primary ;
+        color: $color-white;
+        box-shadow:  0 10px 20px rgba($color-black, 0.2)  ;
+        transform: translateY(-2px);
+    }
+
+    &:active{
+        box-shadow:  0 5px 10px rgba($color-black, 0.2)  ;
+        transform: translateY(0);
+    }
+}
+
+ /// simple button
+ .btn-simple{
+     border-radius: 2px;
+     padding: 1rem 2rem;
+    
+
+     &:link ,&:visited {
+      background-color: #fff;
+    color:$color-primary ; 
+    text-decoration: none ;   
+     }
+
+     &:hover{
+        background-color:$color-primary;
+        color:  #fff;   
+     }
+   
+
+}
+
+/////sub titles
+.subtitiles{
+    text-align: center ;
+    margin-bottom: 5rem;
+
+    .titlesm{
+        color: lighten($color-primary, 10%) ;
+        font-family: "Oregano" , sans-serif;
+        font-size: 4rem;
+        font-weight: bold;
+        letter-spacing: 1.7 ;
+        text-transform: capitalize ;
+        opacity: 30%;
+        
+    }
+
+    .titlelg{
+        font-size: 4rem;
+        font-weight: bold;
+        letter-spacing: 1.5 ;
+        text-transform: capitalize ;
+        color:$color-black ; 
+    }
+
+    .description{
+        width:50%;
+        margin: 10px auto ;
+    }
+}
+
+
+
+///////////****  Packages cards ******//////////
+.card{
+    perspective: 150rem;  // to make animation smooth
+    -moz-perspective: 150rem ;
+    position: relative ;
+    height: 55rem ; // as div hieght collapse because of all child absolute
+       
+
+    &_side{
+    width:100%;
+    height: 50rem;
+    transition: all 1s ease ;
+    position: absolute ;
+    top: 0 ;
+    left: 0;  
+    backface-visibility: hidden ; /// to hide the back of the div
+    border-radius: 10px;
+    border:1px solid #f7f7f7 ;
+    box-shadow:  0 5px 10px rgba($color-black, 0.2)  ;
+
+    &-front{
+       background-color: #fff;   
+    }
+
+    &-back{
+        
+        transform:rotateY(180deg) ;
+       
+
+         &-1{
+            background:  linear-gradient(to right bottom, lighten( $color-secondary  , 30%)  ,$color-secondary);
+
+           }
+
+        &-2{
+            background:  linear-gradient(to right bottom, $color-secondary ,  $color-primary );
+
+             }
+        &-3{
+                background:    linear-gradient(to right bottom,  $color-primary ,  $color-ter );
+                 }     
+    }
+
+
+    }
+   
+
+    &:hover  &_side-front{
+        transform:rotateY(-180deg) ;
+      
+    }
+
+    &:hover  &_side-back{
+        transform:rotateY(0) ;
+     
+    }
+
+  
+    //// front side content
+    &_image{
+        height: 25rem ;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        background-blend-mode: screen ;
+        background-size: cover ;
+        color: #fff ;
+        padding: 2.5rem 2rem;
+        position: relative;
+      
+
+        &-1{
+            background: radial-gradient(circle  , darken( $color-secondary, 30%) ,  darken( $color-primary, 20%) ) , url("../imgs/usa.jpg")  ;
+        }
+
+        &-2{
+            background: radial-gradient(circle ,  darken( $color-primary, 30%)  ,  $color-ter ) , url("../imgs/paris.jpg") ;
+        }
+
+        &-3{
+            background: radial-gradient(circle ,  $color-ter , darken($color-ter , 30%)  ) , url("../imgs/greenland.jpg") ;
+        }
+
+
+
+    }
+
+    &_title{
+        font-size: 4rem;
+        text-transform: uppercase ;
+        font-weight: 900;  
+        letter-spacing: 3 ;
+        text-shadow: 0 10px 20px rgba($color-black, 0.6)  ;
+     }
+
+    &_price{
+        position: absolute;
+        right:2rem;
+        bottom:2rem;
+        font-size: 3rem;
+        font-weight: 900; 
+        background-color: #fff ;
+        color: $color-primary ;
+        padding: 10px 20px;
+        border-radius: 10px;
+        span{
+            font-size: 2rem;
+        font-weight: 400;
+         color : #7a7979 ;
+         display: block;
+        }
+    }
+
+    &_subtitle{
+        text-align: center ;
+        padding: 2rem;
+        position: relative;
+         
+       
+         &::after{
+            position: absolute;
+            content: "";
+            background: $color-primary;
+            width: 6rem;
+            height: 2px;
+            bottom : -.5rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin: auto; 
+         } 
+       
+    }
+    &_content{
+        margin-top: 2rem;
+        color:#000 ;
+        font-size: 1.6rem;
+        text-align: center ;
+
+        ul{
+            list-style: none ;
+            margin-top: 1rem;
+            li{
+                padding:1rem;
+                border-top: #f7f7f7 1px solid ;
+                color: #7a7979 ;
+            }
+        }
+    }
+
+    &_back_content{
+        @include centerElement ;
+        color: #fff;
+        width:70%;
+        text-align: center;
+      
+
+        .p1{
+          text-transform: uppercase ;
+          font-size: 3rem ;
+          letter-spacing: 2 ;
+          font-weight: 600;
+          text-align: center ;
+          margin-bottom: 1rem;
+           
+
+
+          &::after{
+            content: "" ;
+            background-color: #fff ;
+            width:100%;
+            display: block ;
+            height: 5px;
+       }
+           }
+
+          
+
+          .p2{
+            @include clearfix;
+            margin-bottom: 2rem;
+            
+              &1{
+                  float:left;
+                  .sm{
+                      display: block;
+                      font-size: 1.2rem;
+                  }
+              }
+              &2{
+                  float:right;
+                  font-size: 4rem;
+                  letter-spacing: 1.5;
+                  font-weight: 600;
+                  margin-top: -5px;
+              }
+
+          }
+        
+    }
+}

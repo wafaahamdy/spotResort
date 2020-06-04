@@ -1,0 +1,49 @@
+.formbtn{
+    text-align: center ;
+    padding-top: 15px;
+}
+
+
+.section_booking{
+    width:80%;
+    margin:0 auto ;
+    background-color: #fff;
+    transform: translateY(-7rem);
+    border-radius: 1rem;
+    position: relative;
+    padding: 3rem ;  
+
+    @include responsive (tab-port) {
+        width:90%;
+           
+    }
+
+    @include responsive (phone) {
+        width:100%;
+        border-radius: 0;
+           
+    }
+ 
+}
+
+.label{
+    font-size: 1.6rem;
+}
+.form-control{
+    display: block;
+    color: $color-grey-dark ;
+    height: 30px;
+   background-color: rgba(238, 237, 237, 0.79);
+    padding: 1.5rem ;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 4px ;
+    width:100%;
+    margin-top: 2rem;
+  //  -moz-appearance: textfield;
+
+    &.datepick{
+        padding: .8rem ;
+    }
+}
+

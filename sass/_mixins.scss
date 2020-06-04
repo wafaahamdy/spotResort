@@ -1,0 +1,76 @@
+
+///mixins
+@mixin centerElement{
+    position: absolute;
+    left:50%;
+    top:50% ;
+    transform: translate(-50% , -50%) ;
+    }
+    
+    
+    @mixin clearfix {
+    &::after{
+    content: "";
+    clear: both;
+    display: table;
+    }
+    }
+    
+    @mixin styleLink ($ncolor) {
+        &:link,&:visited{
+            text-decoration: none;
+            text-transform: uppercase;
+            color:$ncolor;
+    
+        }
+    }
+    
+    @mixin underlineHover ($hcolor) {
+        display: inline-block;
+        
+      position: relative;
+    
+        &:after {    
+            background: none repeat scroll 0 0 transparent;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 2px;
+            left: 50%;
+            position: absolute;
+            background: $hcolor;
+            transition: width 0.3s ease 0s, left 0.3s ease 0s;
+            width: 0;
+          }
+          &:hover {
+              color:$hcolor ;
+          }
+          &:hover:after { 
+            width: 100%; 
+            left: 0; 
+          }
+        
+    }
+    
+
+
+    ///// responsive mixins
+
+    @mixin responsive($breakpoint){
+      @if $breakpoint == phone {
+        @media (max-width:  37.5rem){     @content  }  ;   //600px
+      }
+
+      @if $breakpoint == tab-port {
+        @media (max-width:  56.25rem){     @content  }  ; //900px
+      }
+
+      @if $breakpoint == tab-land {
+        @media (max-width:   75rem){     @content  } ; //1200px
+      }
+      @if $breakpoint == big-desktop {
+        @media (min-width:   112.5rem){     @content  } ; //1800px
+      }
+
+     
+    }

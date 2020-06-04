@@ -1,0 +1,303 @@
+
+.header{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    min-height: 500px;
+    background-color: $color-blue-dark ; 
+    overflow: hidden;  /// to fix the priblem of scrollbars
+    text-align: center;
+}
+
+.navdiv{
+    position: absolute;
+    top:30px;
+    z-index: 1;
+    width:70%;
+  margin-left: 15%;
+
+  @include responsive(tab-port) {
+  top: 0;
+  left:0 ;
+  width:100%;
+  margin-left: 0 ;
+  }
+      }
+
+.nav{
+   width:100%;
+   position: relative; 
+   text-align: center ;
+
+/// responsive button
+
+&_checkbox , &_background  , &_button , &_mobile {
+    display: none;
+  }
+@include responsive(tab-port) {
+
+    &_background {
+        display:inline;
+        background-image: radial-gradient(
+          $color-primary,
+          $color-ter
+        );
+        width: 7rem;
+        height: 7rem;
+        border-radius: 2rem;
+        position: absolute;
+        top: 4rem;
+        right: 5rem;
+        z-index: 1000;
+        transition: all 0.8s ease;
+        overflow: hidden;
+      }
+
+&_button {
+    display:inline;
+    background-color: #fff;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 2rem;
+    position: absolute;
+    top: 4rem;
+    right: 5rem;
+    z-index: 2000;
+    text-align: center;
+    box-shadow: 0 1rem 2rem rgba($color: #000, $alpha: 0.1);
+    cursor: pointer;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 600;
+    color: $color-primary;
+
+    &::before,
+    &::after {
+      content: "__";
+      display: inline-block;
+      position: absolute;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    &::before {
+      top: -1rem;
+    }
+
+    &::after {
+      top: 1rem;
+      left: 2.1rem;
+    }
+
+    &:hover::before {
+      top: -1.2rem;
+    }
+
+    &:hover::after {
+      top: 1.2rem;
+    }
+  } /// of button
+
+
+  //// style checkbox itsel
+
+  
+  &_checkbox:checked ~ &_background {
+  transform: scale(50);
+ 
+  }
+
+  &_checkbox:checked ~ &_nav {
+    opacity: 1;
+    width: 100%;
+  }
+
+  &_checkbox:checked ~ &_button span {
+    opacity: 0;
+  }
+  &_checkbox:checked ~ &_button::before {
+    top: 2.2rem;
+    left: 3.1rem;
+    transform: rotate(135deg) scale(1.2);
+  }
+  &_checkbox:checked ~ &_button::after {
+    top: 2.2rem;
+    left: 1.1rem;
+    transform: rotate(-135deg) scale(1.2);
+  }
+
+
+  &_checkbox:checked ~ &_mobile {
+    opacity: 1;
+      width:100%;
+  }
+
+  &_mobile{
+      display:block;
+      opacity: 0;
+      width:0;
+      position: absolute ;
+      top:15rem;
+      left:50% ;
+      transform: translateX(-50%) ;
+      z-index: 2000;
+      transition: all 0.2s;
+      transition-delay: .1s;
+      
+      li{
+          list-style: none;
+          font-size: 2.2rem;
+          padding: 1rem;
+          text-transform: uppercase ;
+      
+          a{
+            @include styleLink ($color-white) ;
+            @include underlineHover ($color-white) ;
+         }    
+
+      }
+  }
+} ///phone toggle
+///// nav menu
+
+    ul{
+        list-style: none ;
+        margin-top: 3.5rem;
+        @include responsive (tab-port) {  margin-top: 0;}
+
+        
+       
+    li{
+        display: inline-block;
+
+        @include responsive (tab-port) {
+            display: block;
+            margin-right : 0;
+        }
+
+        margin-right : 1.5rem;
+        &:last-child{
+            margin-right : 0;
+        }
+        
+    }
+
+
+    a{
+       @include styleLink ($color-white) ;
+       @include underlineHover ($color-primary) ;
+    }    
+    }
+
+    .rightnav{
+        float: right;
+        width:30%;
+        text-align: right;
+        }
+
+    .leftnav{
+        float:left;
+        width:30%;
+        text-align: left ;
+    }
+
+    
+
+
+// menu on mobile
+ @include responsive(tab-port) {
+  
+    .leftnav ,.rightnav  {
+display: none;
+    } 
+    }
+} /// of nav
+
+.logo_box{
+    display: inline-block;
+    z-index: 1;
+    height: 10rem; 
+    margin-left: 3rem ;
+    margin-right: 3rem;
+    text-align: center ;
+
+    @include responsive(tab-port) {
+    position: absolute;
+    top:3rem;
+    left:2rem;
+    text-align: left;
+    height: 7.5rem;  
+    z-index: 2000;
+    }
+        
+    .logo{
+     height: 100% ;
+     display: inline;
+    
+    
+      }
+
+}
+
+ .video_bg{
+position: absolute;
+top:0;
+left:0;
+height: 100%;
+width:100%;
+opacity: 0.6;
+
+    .video{
+        height: 100%;
+        width:100%;
+        object-fit: cover ;
+    }
+
+ }
+
+
+ .heading{
+     position: absolute;
+     top:55%;
+     left:50%;
+     transform: translate(-50%,-50%) ;
+    
+     color: $color-white ;
+     letter-spacing: .7rem;
+     text-transform: uppercase;
+      
+
+     @include responsive(phone){
+        letter-spacing: .3rem;
+    }
+     
+     &__main{
+         display: block ;
+         font-size: 3.3rem;
+         margin-bottom: 2.5rem;
+         font-family: "Oregano" , sans-serif;
+        
+         @include responsive(tab-port){
+             width:80vw;
+         }
+
+         
+
+     }
+
+     &__sub{
+        display: block ;
+        font-size: 2.3rem;
+        margin-bottom: 4rem;
+        font-family: "Oregano" , sans-serif;
+    }
+ }
+
+ .moveinLeft{
+    animation: moveInLeft 2s ease ;
+}
+
+
+.moveinRight{
+    animation: InRight 2s ease ;
+}
