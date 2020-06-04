@@ -26,6 +26,10 @@ $gutter-horizontal: 3rem;
       max-width: 60rem;
     }
 
+    @include responsive(phone) {
+      max-width: 30rem;
+    }
+
     
 [class^="col-"]{   // any class that starts with that
     float : left ;

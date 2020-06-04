@@ -520,6 +520,9 @@ body {
   @media (max-width: 56.25rem) {
     .row {
       max-width: 60rem; } }
+  @media (max-width: 37.5rem) {
+    .row {
+      max-width: 30rem; } }
   .row [class^="col-"] {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
